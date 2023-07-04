@@ -1,10 +1,10 @@
 model_params:
   name: 'MSSIMVAE'
   in_channels: 3
-  latent_dim: 10
+  latent_dim: 16 
 
 data_params:
-  data_path: "Data/BCEcombined/"
+  data_path: "Data/lunar-lander/data_comb_third_vae"
   train_batch_size: 32
   val_batch_size:  32
   patch_size: 64
@@ -20,7 +20,7 @@ exp_params:
 
 trainer_params:
   gpus: [0]
-  max_epochs: 64
+  max_epochs: 100
 
 logging_params:
   save_dir: "logs/BCE_sum_VAE/"

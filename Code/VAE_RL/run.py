@@ -37,9 +37,9 @@ tb_logger =  TensorBoardLogger(save_dir=config['logging_params']['save_dir'],
 seed_everything(config['exp_params']['manual_seed'], True)
 
 model = vae_models[config['model_params']['name']](**config['model_params'])
-load_pretrained = True
+load_pretrained = False
 if load_pretrained:
-    ckpt_path='logs/BCE_sum_VAE/MSSIMVAE//version_23/checkpoints/last.ckpt'
+    ckpt_path='logs/BCE_sum_VAE/MSSIMVAE/version_7/checkpoints/last.ckpt'
     ckpt = torch.load(ckpt_path)
     experiment = VAEXperiment(model, config['exp_params'])
     experiment.load_state_dict(ckpt['state_dict'])
