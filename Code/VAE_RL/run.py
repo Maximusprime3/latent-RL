@@ -39,7 +39,7 @@ seed_everything(config['exp_params']['manual_seed'], True)
 model = vae_models[config['model_params']['name']](**config['model_params'])
 load_pretrained = False
 if load_pretrained:
-    ckpt_path='logs/BCE_sum_VAE/MSSIMVAE/version_7/checkpoints/last.ckpt'
+    ckpt_path='logs/BCE_sum_VAE_32/MSSIMVAE/version_0/checkpoints/last.ckpt'
     ckpt = torch.load(ckpt_path)
     experiment = VAEXperiment(model, config['exp_params'])
     experiment.load_state_dict(ckpt['state_dict'])

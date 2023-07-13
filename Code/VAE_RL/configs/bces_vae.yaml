@@ -1,10 +1,10 @@
 model_params:
   name: 'MSSIMVAE'
   in_channels: 3
-  latent_dim: 16 
+  latent_dim: 2 
 
 data_params:
-  data_path: "Data/lunar-lander/data_comb_third_vae"
+  data_path: "Data/MountainCar/init3_agent_2_v12"
   train_batch_size: 32
   val_batch_size:  32
   patch_size: 64
@@ -23,5 +23,5 @@ trainer_params:
   max_epochs: 100
 
 logging_params:
-  save_dir: "logs/BCE_sum_VAE/"
+  save_dir: "logs/MountainCar/BCE_sum_VAE_2/"
   name: 'bceVAE'
