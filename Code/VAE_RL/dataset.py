@@ -19,14 +19,14 @@ class MyDataset(Dataset):
                  transform: Callable,
                 **kwargs):
         self.data_dir = Path(data_path) # relative path to directory + filename        
-        print('AAA', self.data_dir)
+        #print('AAA', self.data_dir)
         self.transforms = transform
         
         #cannot be torch needs to be string
         #imgs = torch.load(self.data_dir)
 
         imgs = sorted([f for f in self.data_dir.iterdir() if f.suffix == '.jpeg'])
-        print('MyDataset: ', len(imgs), ' images found')
+        print('MyDataset: ', len(imgs), ' images found in', self.data_dir)
         self.imgs = imgs[:int(len(imgs) * 0.75)] if split == "train" else imgs[int(len(imgs) * 0.75):]
         
         pass

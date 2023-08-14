@@ -1,4 +1,5 @@
 import os
+import glob
 import yaml
 import argparse
 import numpy as np
@@ -37,9 +38,12 @@ tb_logger =  TensorBoardLogger(save_dir=config['logging_params']['save_dir'],
 seed_everything(config['exp_params']['manual_seed'], True)
 
 model = vae_models[config['model_params']['name']](**config['model_params'])
-load_pretrained = False
-if load_pretrained:
-    ckpt_path='logs/BCE_sum_VAE_32/MSSIMVAE/version_0/checkpoints/last.ckpt'
+load_pretrained = config['model_params']['load_pretrained']
+if load_pretrained == "True":
+    models_directory = config["model_params"]['pretrained_model_path']
+    # Find latest version
+    latest_version_path = max(glob.glob(os.path.join(models_directory, '*/')), key=os.path.getmtime)
+    ckpt_path = latest_version_path + '/checkpoints/last.ckpt'
     ckpt = torch.load(ckpt_path)
     experiment = VAEXperiment(model, config['exp_params'])
     experiment.load_state_dict(ckpt['state_dict'])

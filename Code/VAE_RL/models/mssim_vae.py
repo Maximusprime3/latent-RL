@@ -22,7 +22,7 @@ class MSSIMVAE(BaseVAE):
 
         modules = []
         if hidden_dims is None:
-            hidden_dims = [32, 64, 128, 256, 512]
+            hidden_dims = [32, 64, 128, 256, 512] #maybe too big?
 
         # Build Encoder
         for h_dim in hidden_dims:
