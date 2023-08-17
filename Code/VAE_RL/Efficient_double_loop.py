@@ -44,12 +44,12 @@ def get_vae(version='version_0',log_directory='logs/BCE_test_VAE_1/MSSIMVAE/',
 
 #Make a funciton to create environment, this allows to vectorize it
 def make_env(env_id: str = "MountainCarContinuous-v0", rank: int = 0, seed: int = 42, 
-            data_name: str = "test2", collect_frames: bool = True, env_iterator: int = 0,
+            data_dir: str = "Data/MountainCar/test2", collect_frames: bool = True, env_iterator: int = 0,
             vae_version: int = 0, latent_dim: int = 1,
             vae_directory: str = 'logs/MountainCar/BCE_test_VAE_1/MSSIMVAE/',
             hparam_path: str = "configs/bces_no_pretrained.yaml"):
     def _init():
-        save_path='Data/MountainCar/'+data_name+'/train_env_id_'+str(env_iterator)+'_nenv_'+str(rank)+'_'
+        save_path= data_dir+'/train_env_id_'+str(env_iterator)+'_nenv_'+str(rank)+'_'
         vae = get_vae(version='version_'+str(vae_version),
                       log_directory = vae_directory,
                       hparam_path = hparam_path)
@@ -148,6 +148,7 @@ def main():
     agent_log_dir = agent_model_dir+"/logs" #where to log RL progress
     vae_name = "BCE_VAE_l1_test2_A2C"
     vae_directory = 'logs/MountainCar/BCE_VAE_1_test2/MSSIMVAE/' # directory for versions of the vae
+    
 
     #num of resets
     n_rl_resets = -1
@@ -204,7 +205,7 @@ def main():
 
             print('making env')
             env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
-            data_name = "test2", collect_frames = True, env_iterator = env_iter,
+            data_dir = save_path, collect_frames = True, env_iterator = env_iter,
             vae_version = vae_version,
             vae_directory = vae_directory,
             hparam_path = config_path) for i in range(n_envs)])
@@ -243,7 +244,7 @@ def main():
             
             #make new env with current vae
             env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
-                data_name = "test2", collect_frames = True, env_iterator = env_iter,
+                data_dir = save_path, collect_frames = True, env_iterator = env_iter,
                 vae_version = vae_version,
                 vae_directory = vae_directory,
                 hparam_path = config_path) for i in range(n_envs)])
@@ -283,7 +284,7 @@ def main():
         #         hparam_path = config_path) for i in range(n_envs)])
 
         eval_env = make_env(env_id = "MountainCarContinuous-v0", rank=0, 
-                data_name = "test2", collect_frames = False,
+                data_dir = save_path, collect_frames = False,
                 vae_version = vae_version,
                 vae_directory = vae_directory,
                 hparam_path = config_path)()
