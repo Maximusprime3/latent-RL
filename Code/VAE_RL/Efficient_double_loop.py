@@ -25,7 +25,7 @@ from stable_baselines3.common.evaluation import evaluate_policy
 
 
 ###
-# when you restart the with the same names, delete data, VAE, RL end of loop saves and logs
+# when you restart the with the same names, delete data, VAE, RL end of loop saves, logs and rewards
 ###
 
 # get the vae
@@ -167,15 +167,18 @@ def main():
         print("num of collected obs", num_old_obs)
         num_new_obs = 0
 
-        ## do maybe 5% or soemething
+        ## do maybe 5% or soemething,
+        #do percentage of old reward, but if it is close to 0, that percentage is low, so also hava a fixed term, adequatly picked for the environment
+        #doesnt work so good with negative #do 3% + 2, so min stagnation is if current_reward(=0)<last_reward+2, max stagnation current_reward(=99,-99)<last_reward+5
+        #just do + 4
         #do +1 to crack assymptotic improvements that never surpass a threshold, aka -1, -0.1, -0.01, -0.001 gets better but is also stuck
-        if current_reward <= last_reward * 0.95 :
+        if current_reward <= last_reward + 3 :
             getting_worse += 1 
         else:
             getting_worse = 0
-        
+        print('getting_worse count:', getting_worse)
         #stagnation threshold to train new vae from scratch
-        if getting_worse == 3:
+        if getting_worse >= 3:
             train_new_vae = True
         
         #make eval callback to count up the getting worse
@@ -204,6 +207,7 @@ def main():
                 print("Have {} bytes in stdout:\n{}".format(len(result.stdout), result.stdout.decode('utf-8')))
 
             print('making env')
+            #make
             env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
             data_dir = save_path, collect_frames = True, env_iterator = env_iter,
             vae_version = vae_version,
@@ -214,7 +218,7 @@ def main():
             #new agent from scratch 
             # Tuned
             print("making new rl agent")
-            n_steps = 10 
+            n_steps = 100 
             agent = A2C(
                 env = env,
                 n_steps= n_steps,           
