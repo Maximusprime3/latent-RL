@@ -42,14 +42,14 @@ def get_vae(version='version_0',log_directory='logs/BCE_test_VAE_1/MSSIMVAE/',
     vae = experiment.model
     return vae
 
-#Make a vectorized environment
+#Make a funciton to create environment, this allows to vectorize it
 def make_env(env_id: str = "MountainCarContinuous-v0", rank: int = 0, seed: int = 42, 
-            data_name: str = "test", collect_frames: bool = True, env_iterator: int = 0,
-            vae_version: int = 0, latent_dim: int = 2,
+            data_dir: str = "Data/MountainCar/test2", collect_frames: bool = True, env_iterator: int = 0,
+            vae_version: int = 0, latent_dim: int = 1,
             vae_directory: str = 'logs/MountainCar/BCE_test_VAE_1/MSSIMVAE/',
             hparam_path: str = "configs/bces_no_pretrained.yaml"):
     def _init():
-        save_path='Data/MountainCar/'+data_name+'/train_env_id_'+str(env_iterator)+'_nenv_'+str(rank)+'_'
+        save_path= data_dir+'/train_env_id_'+str(env_iterator)+'_nenv_'+str(rank)+'_'
         vae = get_vae(version='version_'+str(vae_version),
                       log_directory = vae_directory,
                       hparam_path = hparam_path)
@@ -106,7 +106,7 @@ def main():
     print("init")
     #collect episodes with random actions for picture data
     #no training
-    data_name='test2'
+    data_name='A2C_l1_test2'
     save_path='Data/MountainCar/'+data_name+'/'
     num_of_episodes = 1
 
@@ -137,7 +137,7 @@ def main():
 
 
     #Double loop vae and RL training
-    target_reward = 50 #90
+    target_reward = 80 #90
     current_reward = 0
     last_reward = -1000
     vae_version = 0
@@ -146,8 +146,9 @@ def main():
     train_new_vae = True # create the first agent only in the first round
     agent_model_dir = "RLmodels/MountainCarContinuous-v0/Double_loop"#where to save the RL agents
     agent_log_dir = agent_model_dir+"/logs" #where to log RL progress
-    vae_name = "Test1_A2C_vae_l2"
-    vae_directory = 'logs/MountainCar/BCE_test1_VAE_2/MSSIMVAE/' # directory for versions of the vae
+    vae_name = "BCE_VAE_l1_test2_A2C"
+    vae_directory = 'logs/MountainCar/BCE_VAE_1_test2/MSSIMVAE/' # directory for versions of the vae
+    
 
     #num of resets
     n_rl_resets = -1
@@ -166,8 +167,9 @@ def main():
         print("num of collected obs", num_old_obs)
         num_new_obs = 0
 
+        ## do maybe 5% or soemething
         #do +1 to crack assymptotic improvements that never surpass a threshold, aka -1, -0.1, -0.01, -0.001 gets better but is also stuck
-        if current_reward <= last_reward + 1:
+        if current_reward <= last_reward * 0.95 :
             getting_worse += 1 
         else:
             getting_worse = 0
@@ -203,7 +205,7 @@ def main():
 
             print('making env')
             env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
-            data_name = "test2", collect_frames = True, env_iterator = env_iter,
+            data_dir = save_path, collect_frames = True, env_iterator = env_iter,
             vae_version = vae_version,
             vae_directory = vae_directory,
             hparam_path = config_path) for i in range(n_envs)])
@@ -212,7 +214,7 @@ def main():
             #new agent from scratch 
             # Tuned
             print("making new rl agent")
-            n_steps = 100 
+            n_steps = 10 
             agent = A2C(
                 env = env,
                 n_steps= n_steps,           
@@ -242,7 +244,7 @@ def main():
             
             #make new env with current vae
             env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
-                data_name = "test2", collect_frames = True, env_iterator = env_iter,
+                data_dir = save_path, collect_frames = True, env_iterator = env_iter,
                 vae_version = vae_version,
                 vae_directory = vae_directory,
                 hparam_path = config_path) for i in range(n_envs)])
@@ -282,7 +284,7 @@ def main():
         #         hparam_path = config_path) for i in range(n_envs)])
 
         eval_env = make_env(env_id = "MountainCarContinuous-v0", rank=0, 
-                data_name = "test", collect_frames = False,
+                data_dir = save_path, collect_frames = False,
                 vae_version = vae_version,
                 vae_directory = vae_directory,
                 hparam_path = config_path)()
@@ -291,7 +293,7 @@ def main():
         
         #eval
         
-        n_eval_ep= int(num_of_steps/999)    #more training, more eval
+        n_eval_ep= int((num_of_steps/999)/2)    #more training, more eval
         if n_eval_ep < 10:                  #at least 10 episodes of eval
             n_eval_ep = 10 
         #mean_reward, std_reward = evaluate_policy(agent, eval_env, n_eval_episodes=10, deterministic=True)
@@ -303,8 +305,11 @@ def main():
         current_reward = mean_reward
 
         #save the model
-        
         agent.save("RLmodels/MountainCarContinuous-v0/Double_loop/end_of_loop_save/"+agent_name)
+        #save the rewards
+        np.savetxt('RLmodels/MountainCarContinuous-v0/Double_loop/rewards/'+agent_name+'_rewards.csv', reward_list, delimiter=',', fmt='%.4f')
+
+
         #count up vae version for naming
         vae_version += 1
         env_iter += 1 
