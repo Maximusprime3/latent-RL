@@ -316,13 +316,13 @@ def main():
                 #update env of the agent
                 agent.env = env
         else:
-            print("continue with old vae")
-            command = [sys.executable, "run.py", "-c", "configs/bces_continue_sac.yaml"]
-            result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            print("Return code:", result.returncode)
-            print("Have {} bytes in stdout:\n{}".format(len(result.stdout), result.stdout.decode('utf-8')))
+            #print("continue with old vae")
+            #command = [sys.executable, "run.py", "-c", "configs/bces_continue_sac.yaml"]
+            #result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            #print("Return code:", result.returncode)
+            #print("Have {} bytes in stdout:\n{}".format(len(result.stdout), result.stdout.decode('utf-8')))
             print('RLmodels/MountainCarContinuous-v0/Double_loop/end_of_loop_save/BCE_VAE_l1_test1_SAC_v8__1vae_resets__2rl_resets__.zip')
-            agent = PPO.load('RLmodels/MountainCarContinuous-v0/Double_loop/end_of_loop_save/BCE_VAE_l1_test1_SAC_v8__1vae_resets__2rl_resets__.zip')
+            agent = SAC.load('RLmodels/MountainCarContinuous-v0/Double_loop/end_of_loop_save/BCE_VAE_l1_test1_SAC_v8__1vae_resets__2rl_resets__.zip')
             config_path = "configs/bces_no_pretrained_sac.yaml"
             env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
                     data_dir = save_path, collect_frames = False, env_iterator = env_iter,
