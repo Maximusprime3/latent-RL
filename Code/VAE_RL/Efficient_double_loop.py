@@ -45,9 +45,10 @@ def get_vae(version='version_0',log_directory='logs/BCE_test_VAE_1/MSSIMVAE/',
 #Make a funciton to create environment, this allows to vectorize it
 def make_env(env_id: str = "MountainCarContinuous-v0", rank: int = 0, seed: int = 42, 
             data_dir: str = "Data/MountainCar/test2", collect_frames: bool = True, env_iterator: int = 0,
-            vae_version: int = 0, latent_dim: int = 1,
+            vae_version: int = 0, latent_dim: int = 3,
             vae_directory: str = 'logs/MountainCar/BCE_test_VAE_1/MSSIMVAE/',
-            hparam_path: str = "configs/bces_no_pretrained.yaml"):
+            hparam_path: str = "configs/bces_no_pretrained.yaml",
+            agent_name: str = ''):
     def _init():
         save_path= data_dir+'/train_env_id_'+str(env_iterator)+'_nenv_'+str(rank)+'_'
         vae = get_vae(version='version_'+str(vae_version),
@@ -57,17 +58,52 @@ def make_env(env_id: str = "MountainCarContinuous-v0", rank: int = 0, seed: int 
         env = gym.make(env_id,
                     render_mode ='rgb_array')
         
-        seed = 42
+        seed = 42 +env_iterator
         env.reset(seed=seed + rank)
         env = PixelObservationWrapper(env)
         if collect_frames:
-            env = frame_saver(env, save_path)
+            env = frame_saver(env, save_path, agent_name=agent_name)
         env = VAE_ENC(env, vae, latent_dim)
         env = FrameStack(env, num_stack=2)
         env = Monitor(env)
         return env
     set_random_seed(seed)
     return _init
+
+#to save the encodings of all pictures used during training of the vae
+def save_known_universe(vae, observation_dir, save_dir, save_name, batch_size):
+    os.makedirs(save_dir, exist_ok=True)
+    
+    # Collect filenames of all JPEG images in the observation directory
+    image_filenames = [filename for filename in os.listdir(observation_dir) if filename.lower().endswith('.jpeg')]
+
+    latent_vectors = []
+      
+    for i in range(0, len(image_filenames), batch_size):
+        batch_filenames = image_filenames[i:i + batch_size]
+        batch_images = [Image.open(os.path.join(observation_dir, filename)) for filename in batch_filenames]
+        batch_encodings = encode_images_batch(vae, batch_images)
+        latent_vectors.extend(batch_encodings)
+
+    # Save latent vectors as a CSV file
+    file_name = save_name + '_latent_vectors.csv'
+    csv_path = os.path.join(save_dir, file_name)
+    np.savetxt(csv_path, np.array(latent_vectors), delimiter=',')
+
+
+    
+def encode_images_batch(vae, images):
+    val_transforms = transforms.Compose([transforms.ToTensor(),
+        #transforms.RandomHorizontalFlip(),
+        AddGaussianNoise(0, 0.1),
+        transforms.Resize((64,64)),
+        #transforms.Grayscale(),
+        #transforms.Normalize(self.mean, self.std),
+        ])
+    processed_images = torch.stack([val_transforms(img) for img in images])
+    enc = vae.encode(processed_images)
+    enc = np.array([tensor.detach().cpu().numpy() for tensor in enc])
+    return enc[0]
 
 def eval_agent(agent, env, n_eval_episodes):
     total_rewards = []
@@ -101,13 +137,18 @@ def eval_agent(agent, env, n_eval_episodes):
     return np.mean(total_rewards), np.std(total_rewards), total_rewards
 
 
+
+
+
 def main():
     #init
     print("init")
     #collect episodes with random actions for picture data
     #no training
-    data_name='A2C_l1_test2'
+    data_name='PPO_l3_test2'
     save_path='Data/MountainCar/'+data_name+'/'
+    os.makedirs(save_path, exist_ok=True)
+
     num_of_episodes = 1
 
     env = gym.make("MountainCarContinuous-v0",
@@ -138,23 +179,27 @@ def main():
 
     #Double loop vae and RL training
     target_reward = 80 #90
-    current_reward = 0
-    last_reward = -1000
+    current_reward = -990
+    last_reward = -999 #just so the getting worse counter dosent count up in the very first round
     vae_version = 0
-    n_envs = 4    #how many envs for parallel training #there will be up to n_envs*n_steps 'too many' observations/trainings steps for the rl agent
+    n_envs = 1  #how many envs for parallel training #there will be up to n_envs*n_steps 'too many' observations/trainings steps for the rl agent
     getting_worse = 0 # track if the agent is getting worse 
     train_new_vae = True # create the first agent only in the first round
     agent_model_dir = "RLmodels/MountainCarContinuous-v0/Double_loop"#where to save the RL agents
     agent_log_dir = agent_model_dir+"/logs" #where to log RL progress
-    vae_name = "BCE_VAE_l1_test2_A2C"
-    vae_directory = 'logs/MountainCar/BCE_VAE_1_test2/MSSIMVAE/' # directory for versions of the vae
+    vae_name = "BCE_VAE_l3_test2_PPO"
+    vae_directory = 'logs/MountainCar/'+vae_name+'/MSSIMVAE/' # directory for versions of the vae
+    latent_save_dir = agent_model_dir + "/latent_space_encodings/"+vae_name
     
-
     #num of resets
     n_rl_resets = -1
     n_vae_resets = -1
     reset_num_timesteps = True
     env_iter = 0
+
+    cont = True
+
+    
 
     print("starting double loop")
     print("target reward", target_reward)
@@ -163,120 +208,181 @@ def main():
     print("vae_dir", vae_directory)
 
     while current_reward < target_reward:
+        agent_name = vae_name+"_v"+str(vae_version)+"__"+str(n_vae_resets)+"vae_resets__"+str(n_rl_resets)+"rl_resets__"
+
         num_old_obs = len(os.listdir(save_path))
         print("num of collected obs", num_old_obs)
         num_new_obs = 0
-
-        ## do maybe 5% or soemething,
-        #do percentage of old reward, but if it is close to 0, that percentage is low, so also hava a fixed term, adequatly picked for the environment
-        #doesnt work so good with negative #do 3% + 2, so min stagnation is if current_reward(=0)<last_reward+2, max stagnation current_reward(=99,-99)<last_reward+5
-        #just do + 4
-        #do +1 to crack assymptotic improvements that never surpass a threshold, aka -1, -0.1, -0.01, -0.001 gets better but is also stuck
-        if current_reward <= last_reward + 3 :
-            getting_worse += 1 
-        else:
-            getting_worse = 0
-        print('getting_worse count:', getting_worse)
-        #stagnation threshold to train new vae from scratch
-        if getting_worse >= 3:
-            train_new_vae = True
-        
-        #make eval callback to count up the getting worse
-        #or make brake point of -1/3 of inicial value
-        if getting_worse >= 2 or train_new_vae:
-
-            #train vae from scratch for first run or if its very stagnant
-            if train_new_vae:
-                print("training new vae")
-                # get the vae directories
-                config_path = "configs/bces_no_pretrained.yaml"
-                
-                
-                #os.system("python run.py  -c configs/bces_no_pretrained.yaml")
-                command = [sys.executable, "run.py", "-c", "configs/bces_no_pretrained.yaml"]
-                result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                print("Return code:", result.returncode)
-                print("Have {} bytes in stdout:\n{}".format(len(result.stdout), result.stdout.decode('utf-8')))
-                n_vae_resets += 1
-                train_new_vae = False
+        if cont:
+            ## do maybe 5% or soemething,
+            #do percentage of old reward, but if it is close to 0, that percentage is low, so also hava a fixed term, adequatly picked for the environment
+            #doesnt work so good with negative #do 3% + 2, so min stagnation is if current_reward(=0)<last_reward+2, max stagnation current_reward(=99,-99)<last_reward+5
+            #just do + 4
+            #do +1 to crack assymptotic improvements that never surpass a threshold, aka -1, -0.1, -0.01, -0.001 gets better but is also stuck
+            if current_reward <= last_reward + 2 :
+                getting_worse += 1 
             else:
-                print("continue with old vae")
+                getting_worse = 0
+            print('getting_worse count:', getting_worse)
+            #stagnation threshold to train new vae from scratch
+            if getting_worse >= 3:
+                train_new_vae = True
+            
+            #make eval callback to count up the getting worse
+            #or make brake point of -1/3 of inicial value
+            if getting_worse >= 2 or train_new_vae:
+
+                #train vae from scratch for first run or if its very stagnant
+                if train_new_vae:
+                    print("training new vae")
+                    # get the vae directories
+                    config_path = "configs/bces_no_pretrained.yaml"
+                    
+                    
+                    #os.system("python run.py  -c configs/bces_no_pretrained.yaml")
+                    command = [sys.executable, "run.py", "-c", "configs/bces_no_pretrained.yaml"]
+                    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    print("Return code:", result.returncode)
+                    print("Have {} bytes in stdout:\n{}".format(len(result.stdout), result.stdout.decode('utf-8')))
+                    n_vae_resets += 1
+                    train_new_vae = False
+                else:
+                    print("continue with old vae")
+                    command = [sys.executable, "run.py", "-c", "configs/bces_continiue_training.yaml"]
+                    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    print("Return code:", result.returncode)
+                    print("Have {} bytes in stdout:\n{}".format(len(result.stdout), result.stdout.decode('utf-8')))
+
+                print('making env')
+                #make
+                env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
+                data_dir = save_path, collect_frames = True, env_iterator = env_iter,
+                vae_version = vae_version,
+                vae_directory = vae_directory,
+                hparam_path = config_path,
+                agent_name = agent_name) for i in range(n_envs)])
+
+                
+                #new agent from scratch 
+
+                # Tuned
+                n_steps = 8
+                agent = PPO(
+                    env = env,
+                    policy = 'MlpPolicy',
+                    batch_size = 256,
+                    n_steps = n_steps,
+                    gamma = 0.9999,
+                    learning_rate = 0.0000777,
+                    ent_coef= 0.00429,
+                    clip_range= 0.1,
+                    n_epochs= 10,
+                    gae_lambda= 0.9,
+                    max_grad_norm= 5,
+                    vf_coef= 0.19,
+                    use_sde= True,
+                    policy_kwargs= dict(log_std_init=-3.29, ortho_init=False),
+                    tensorboard_log=agent_log_dir,
+                    seed = 43
+                )
+                # n_steps = 16
+                # agent = PPO(
+                #     env = env,
+                #     policy = 'MlpPolicy',
+                #     n_steps = n_steps,
+                #     gamma = 0.99,
+                #     ent_coef= 0.0,
+                #     n_epochs= 14,
+                #     gae_lambda= 0.98,
+                #     use_sde= True,
+                #     tensorboard_log=agent_log_dir,
+                #     seed = 42
+                # )
+
+                
+                n_rl_resets += 1
+                #reset stepcount in training
+                #reset_num_timesteps = True
+                #ToDo
+                #if new train with old trajectoires Immitation learning
+            else:
+                print("continiue with old vae and rl agent")
+                #continiue training of vae
+
+
                 command = [sys.executable, "run.py", "-c", "configs/bces_continiue_training.yaml"]
                 result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
                 print("Return code:", result.returncode)
                 print("Have {} bytes in stdout:\n{}".format(len(result.stdout), result.stdout.decode('utf-8')))
 
-            print('making env')
-            #make
-            env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
-            data_dir = save_path, collect_frames = True, env_iterator = env_iter,
-            vae_version = vae_version,
-            vae_directory = vae_directory,
-            hparam_path = config_path) for i in range(n_envs)])
-
-            
-            #new agent from scratch 
-            # Tuned
-            print("making new rl agent")
-            n_steps = 100 
-            agent = A2C(
-                env = env,
-                n_steps= n_steps,           
-                policy='MlpPolicy',
-                ent_coef= 0.0,
-                use_sde=True,
-                sde_sample_freq = 16,
-                policy_kwargs= dict(log_std_init=0.0, ortho_init=False),
-                tensorboard_log=agent_log_dir)
-            n_rl_resets += 1
-            #reset stepcount in training
-            reset_num_timesteps = True
-            #ToDo
-            #if new train with old trajectoires Immitation learning
+                #os.system("python run.py  -c configs/bces_continiue_training.yaml")
+                #config_path = "configs/bces_continiue_training.yaml"
+                
+                #make new env with current vae
+                env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
+                    data_dir = save_path, collect_frames = True, env_iterator = env_iter,
+                    vae_version = vae_version,
+                    vae_directory = vae_directory,
+                    hparam_path = config_path,
+                    agent_name = agent_name) for i in range(n_envs)])
+                
+                #continue with old agent
+                #update env of the agent
+                agent.env = env
         else:
-            print("continiue with old vae and rl agent")
-            #continiue training of vae
-
-
-            command = [sys.executable, "run.py", "-c", "configs/bces_continiue_training.yaml"]
-            result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            print("Return code:", result.returncode)
-            print("Have {} bytes in stdout:\n{}".format(len(result.stdout), result.stdout.decode('utf-8')))
-
-            #os.system("python run.py  -c configs/bces_continiue_training.yaml")
-            #config_path = "configs/bces_continiue_training.yaml"
-            
-            #make new env with current vae
+            print('load RLmodels/MountainCarContinuous-v0/Double_loop/end_of_loop_save/BCE_VAE_l1_test3_PPO_v4__0vae_resets__0rl_resets__.zip')
+            agent = PPO.load('RLmodels/MountainCarContinuous-v0/Double_loop/end_of_loop_save/BCE_VAE_l1_test3_PPO_v4__0vae_resets__0rl_resets__.zip')
+            config_path = "configs/bces_no_pretrained.yaml"
             env = DummyVecEnv([make_env(env_id = "MountainCarContinuous-v0", rank=i, 
-                data_dir = save_path, collect_frames = True, env_iterator = env_iter,
-                vae_version = vae_version,
-                vae_directory = vae_directory,
-                hparam_path = config_path) for i in range(n_envs)])
-            
+                    data_dir = save_path, collect_frames = False, env_iterator = env_iter,
+                    vae_version = vae_version,
+                    vae_directory = vae_directory,
+                    hparam_path = config_path,
+                    agent_name = agent_name) for i in range(n_envs)])
+                
             #continue with old agent
             #update env of the agent
             agent.env = env
-        agent.set_env(agent.env, force_reset=True)
-        #hack solution to have every obs from training saved
-        #do a inital run 
-        agent_name = vae_name+"_v"+str(vae_version)+"__"+str(n_vae_resets)+"vae_resets__"+str(n_rl_resets)+"rl_resets__"
-        #agent.learn(total_timesteps=1,reset_num_timesteps=reset_num_timesteps, tb_log_name=agent_name)
-        while num_new_obs < num_old_obs:
-            num_missing_obs = num_old_obs - num_new_obs
-            print('missing_obs', num_missing_obs)
-            num_of_steps = int(num_missing_obs) #int((num_missing_obs / n_steps) / n_envs)
-            print("training rl agent for", num_of_steps)
+            agent.set_env(agent.env, force_reset=True)
+            num_of_steps = 32306
+            print('train for ',num_of_steps,)
             
-            ## make callback to check for longtime decline in later itarations where training takes 50.000+ steps
-            #callback = CheckpointCallback(save_freq=10000, save_path=agent_model_dir)
             agent.learn(total_timesteps=num_of_steps,reset_num_timesteps=reset_num_timesteps, tb_log_name=agent_name)
+            
+        
+        if cont:
+            #save all pictures used during training in latent space
+            print('save latent space')
+            latent_save_name = vae_name+ '_v'+str(vae_version)
+            vae = get_vae(version='version_'+str(vae_version),
+                        log_directory = vae_directory,
+                        hparam_path = config_path)    
+            save_known_universe(vae, observation_dir = save_path, save_dir = latent_save_dir, save_name=latent_save_name, batch_size=256)
+
+        
 
 
-            #agent.learn(total_timesteps=num_of_steps,reset_num_timesteps=reset_num_timesteps, callback=callback, tb_log_name=agent_name)
+            agent.set_env(agent.env, force_reset=True)
+            #hack solution to have every obs from training saved
+            #do a inital run 
+            agent_name = vae_name+"_v"+str(vae_version)+"__"+str(n_vae_resets)+"vae_resets__"+str(n_rl_resets)+"rl_resets__"
+            #agent.learn(total_timesteps=1,reset_num_timesteps=reset_num_timesteps, tb_log_name=agent_name)
+            while num_new_obs < num_old_obs:
+                num_missing_obs = num_old_obs - num_new_obs
+                print('missing_obs', num_missing_obs)
+                num_of_steps = int(num_missing_obs) #int((num_missing_obs / n_steps) / n_envs)
+                print("training rl agent for", num_of_steps)
+                
+                ## make callback to check for longtime decline in later itarations where training takes 50.000+ steps
+                #callback = CheckpointCallback(save_freq=10000, save_path=agent_model_dir)
+                agent.learn(total_timesteps=num_of_steps,reset_num_timesteps=reset_num_timesteps, tb_log_name=agent_name)
 
-            num_new_obs = len(os.listdir(save_path)) - num_old_obs
-            print(len(os.listdir(save_path)), '-', num_old_obs, '=', num_new_obs)
-            reset_num_timesteps = False
+
+                #agent.learn(total_timesteps=num_of_steps,reset_num_timesteps=reset_num_timesteps, callback=callback, tb_log_name=agent_name)
+
+                num_new_obs = len(os.listdir(save_path)) - num_old_obs
+                print(len(os.listdir(save_path)), '-', num_old_obs, '=', num_new_obs)
+                reset_num_timesteps = False
 
         #make eval env no save
         print("evaluate rl agent")
@@ -288,7 +394,7 @@ def main():
         #         hparam_path = config_path) for i in range(n_envs)])
 
         eval_env = make_env(env_id = "MountainCarContinuous-v0", rank=0, 
-                data_dir = save_path, collect_frames = False,
+                data_dir = save_path, collect_frames = False, env_iterator = env_iter,
                 vae_version = vae_version,
                 vae_directory = vae_directory,
                 hparam_path = config_path)()
@@ -305,6 +411,8 @@ def main():
         mean_reward, std_reward, reward_list = eval_agent(agent, eval_env, n_eval_episodes= n_eval_ep)
         print('all rewards', reward_list)
         print(agent_name," mean reward, std ", str(mean_reward), str(std_reward))
+        if (mean_reward > target_reward) and n_eval_ep < 20:
+            mean_reward, std_reward, reward_list = eval_agent(agent, eval_env, n_eval_episodes= 20)
         last_reward = current_reward
         current_reward = mean_reward
 
@@ -317,6 +425,7 @@ def main():
         #count up vae version for naming
         vae_version += 1
         env_iter += 1 
+        cont = True
         #inititally =0 want to increase for the next iteraiton
         
 
@@ -324,18 +433,20 @@ def main():
 class frame_saver(ObservationWrapper):
     def __init__(self, env,
                  collect_frames_dir = None,
-                 start_index = 0):
+                 start_index = 0,
+                 agent_name =''):
         super().__init__(env)
         
         self.collect_frames_dir = collect_frames_dir
         self.frame_idx = start_index
+        self.agent_name = agent_name
                 
         
     def observation(self, obs):
         frame = obs['pixels']#.to('cuda')
         if self.collect_frames_dir != None:
             im = Image.fromarray(np.array(frame))
-            im.save(self.collect_frames_dir+'_'+str(self.frame_idx)+'.jpeg')
+            im.save(self.collect_frames_dir+'_'+self.agent_name+'_'+str(self.frame_idx)+'.jpeg')
             self.frame_idx += 1
         return obs
 
@@ -400,3 +511,18 @@ class VAE_ENC(ObservationWrapper):
 
 if __name__ == '__main__':
     main()
+
+
+
+            # # Tuned
+            # print("making new rl agent")
+            # n_steps = 100 
+            # agent = A2C(
+            #     env = env,
+            #     n_steps= n_steps,           
+            #     policy='MlpPolicy',
+            #     ent_coef= 0.0,
+            #     use_sde=True,
+            #     sde_sample_freq = 16,
+            #     policy_kwargs= dict(log_std_init=0.0, ortho_init=False),
+            #     tensorboard_log=agent_log_dir)
