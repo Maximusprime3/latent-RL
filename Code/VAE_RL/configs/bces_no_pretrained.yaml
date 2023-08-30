@@ -1,7 +1,7 @@
 model_params:
   name: 'MSSIMVAE'
   in_channels: 3
-  latent_dim: 1
+  latent_dim: 3
   load_pretrained: False
   pretrained_model_path: ""
 
