@@ -25,5 +25,5 @@ trainer_params:
   max_epochs: 10
 
 logging_params:
-  save_dir: "logs/MountainCar/BCE_test1_VAE_2/"
+  save_dir: "logs/MountainCar/BCE_VAE_l1_test4_PPO/"
   name: 'bceVAE'
