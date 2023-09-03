@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="337.81094mm"
+   height="345.96579mm"
+   viewBox="0 0 337.81094 345.96579"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="2D_VAE_PPO_test1_examples.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="568.21264"
+     inkscape:cy="588.65479"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="961"
+     inkscape:window-x="-8"
+     inkscape:window-y="53"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(149.47296,45.654712)">
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l2_test1_PPO\BCE_VAE_l2_test1_PPO_v0__0vae_resets__0rl_resets_2D.png"
+       y="-45.609711"
+       x="-149.47296"
+       id="image823"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l2_test1_PPO/BCE_VAE_l2_test1_PPO_v0__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l2_test1_PPO\BCE_VAE_l2_test1_PPO_v2__0vae_resets__0rl_resets_2D.png"
+       y="-45.382931"
+       x="-3.3473463"
+       id="image834"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l2_test1_PPO/BCE_VAE_l2_test1_PPO_v2__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l2_test1_PPO\BCE_VAE_l2_test1_PPO_v3__0vae_resets__1rl_resets_2D.png"
+       y="69.62162"
+       x="-149.47296"
+       id="image4548"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l2_test1_PPO/BCE_VAE_l2_test1_PPO_v3__0vae_resets__1rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l2_test1_PPO\BCE_VAE_l2_test1_PPO_v6__1vae_resets__2rl_resets_2D.png"
+       y="69.848404"
+       x="-5.4640131"
+       id="image4570"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l2_test1_PPO/BCE_VAE_l2_test1_PPO_v6__1vae_resets__2rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="193.802" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l2_test1_PPO\BCE_VAE_l2_test1_PPO_v7__1vae_resets__2rl_resets_2D.png"
+       y="184.85295"
+       x="-149.47296"
+       id="image4581"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l2_test1_PPO/BCE_VAE_l2_test1_PPO_v7__1vae_resets__2rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l2_test1_PPO\BCE_VAE_l2_test1_PPO_v8__1vae_resets__3rl_resets_2D.png"
+       y="185.07974"
+       x="-4.3210068"
+       id="image4559"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l2_test1_PPO/BCE_VAE_l2_test1_PPO_v8__1vae_resets__3rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4599"
+       width="274.21854"
+       height="6.9490075"
+       x="-134.70384"
+       y="-45.104996"
+       rx="0.052625362"
+       ry="0.10991585" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-130.96207"
+       y="-40.294144"
+       id="text4603"><tspan
+         sodipodi:role="line"
+         id="tspan4601"
+         x="-130.96207"
+         y="-40.294144"
+         style="stroke-width:0.26458332">2D VAE with PPO test 1 iteration 0           2D VAE with PPO test 1 iteration 2</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4599-3"
+       width="274.21854"
+       height="6.9490075"
+       x="-133.36749"
+       y="69.833862"
+       rx="0.052625362"
+       ry="0.10991586" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-129.62572"
+       y="74.644714"
+       id="text4603-2"><tspan
+         sodipodi:role="line"
+         id="tspan4601-8"
+         x="-129.62572"
+         y="74.644714"
+         style="stroke-width:0.26458332">2D VAE with PPO test 1 iteration 3           2D VAE with PPO test 1 iteration 6</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4599-37"
+       width="274.21854"
+       height="6.9490075"
+       x="-133.90205"
+       y="185.28354"
+       rx="0.052625362"
+       ry="0.10991586" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-130.16026"
+       y="190.09439"
+       id="text4603-9"><tspan
+         sodipodi:role="line"
+         id="tspan4601-6"
+         x="-130.16026"
+         y="190.09439"
+         style="stroke-width:0.26458332">2D VAE with PPO test 1 iteration 7           2D VAE with PPO test 1 iteration 8</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4656"
+       width="1.5119048"
+       height="46.680061"
+       x="-5.4428573"
+       y="-13.885417"
+       rx="0.052625362"
+       ry="0.10991585" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4658"
+       width="1.1339285"
+       height="47.625"
+       x="-5.1026788"
+       y="214.4122"
+       rx="0.052625362"
+       ry="0.10991585" />
+  </g>
+</svg>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="319.91296mm"
+   height="323.89905mm"
+   viewBox="0 0 319.91296 323.89905"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="3D_VAE_PPO_example.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="602.05392"
+     inkscape:cy="663.41925"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1280"
+     inkscape:window-height="961"
+     inkscape:window-x="-8"
+     inkscape:window-y="53"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(123.825,47.26136)">
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l3_test1_PPO\BCE_VAE_l3_test1_PPO_v0__0vae_resets__0rl_resets_3D.png"
+       y="-41.285664"
+       x="-123.825"
+       id="image4526"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l3_test1_PPO/BCE_VAE_l3_test1_PPO_v0__0vae_resets__0rl_resets_3D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="105.07133"
+       width="184.14999" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l3_test1_PPO\BCE_VAE_l3_test1_PPO_v2__0vae_resets__0rl_resets_3D.png"
+       y="-41.285664"
+       x="10.583294"
+       id="image4537"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l3_test1_PPO/BCE_VAE_l3_test1_PPO_v2__0vae_resets__0rl_resets_3D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="104.81734"
+       width="185.50467" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l3_test1_PPO\BCE_VAE_l3_test1_PPO_v4__0vae_resets__0rl_resets_3D.png"
+       y="63.785664"
+       x="-123.825"
+       id="image4548"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l3_test1_PPO/BCE_VAE_l3_test1_PPO_v4__0vae_resets__0rl_resets_3D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="106.68"
+       width="185.50467" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l3_test1_PPO\BCE_VAE_l3_test1_PPO_v6__0vae_resets__1rl_resets_3D.png"
+       y="63.531673"
+       x="10.583294"
+       id="image4559"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l3_test1_PPO/BCE_VAE_l3_test1_PPO_v6__0vae_resets__1rl_resets_3D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="106.51067"
+       width="184.14999" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l3_test1_PPO\BCE_VAE_l3_test1_PPO_v8__1vae_resets__2rl_resets_3D.png"
+       y="170.46567"
+       x="-123.825"
+       id="image4570"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l3_test1_PPO/BCE_VAE_l3_test1_PPO_v8__1vae_resets__2rl_resets_3D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="105.156"
+       width="183.388" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\PPO\BCE_VAE_l3_test1_PPO\BCE_VAE_l3_test1_PPO_v9__1vae_resets__2rl_resets_3D.png"
+       y="170.04234"
+       x="10.583294"
+       id="image4581"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/PPO/BCE_VAE_l3_test1_PPO/BCE_VAE_l3_test1_PPO_v9__1vae_resets__2rl_resets_3D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="106.59534"
+       width="183.388" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4584"
+       width="299.96188"
+       height="7.934473"
+       x="-123.825"
+       y="-41.285664"
+       rx="0.052625362"
+       ry="0.10991585" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-81.95137"
+       y="-28.25408"
+       id="text4603"><tspan
+         sodipodi:role="line"
+         x="-81.95137"
+         y="-28.25408"
+         style="stroke-width:0.26458332"
+         id="tspan4605">Iteration 0                                            Iteration 2                      </tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4584-1"
+       width="299.96188"
+       height="7.934473"
+       x="-123.825"
+       y="63.785664"
+       rx="0.052625362"
+       ry="0.10991586" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-37.417736"
+       y="-40.828678"
+       id="text4642"><tspan
+         sodipodi:role="line"
+         id="tspan4640"
+         x="-37.417736"
+         y="-40.828678"
+         style="stroke-width:0.26458332">3D VAE with PPO test 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-83.304222"
+       y="77.262077"
+       id="text4603-2"><tspan
+         sodipodi:role="line"
+         x="-83.304222"
+         y="77.262077"
+         style="stroke-width:0.26458332"
+         id="tspan4605-3">Iteration 4                                            Iteration 6                      </tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4584-1-6"
+       width="299.96188"
+       height="7.934473"
+       x="-123.825"
+       y="170.46567"
+       rx="0.052625362"
+       ry="0.10991587" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-83.304214"
+       y="183.94208"
+       id="text4603-2-9"><tspan
+         sodipodi:role="line"
+         x="-83.304214"
+         y="183.94208"
+         style="stroke-width:0.26458332"
+         id="tspan4605-3-7">Iteration 8                                            Iteration 9                      </tspan></text>
+  </g>
+</svg>

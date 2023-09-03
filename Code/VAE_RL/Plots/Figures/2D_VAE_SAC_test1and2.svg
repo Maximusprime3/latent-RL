@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="635.30737mm"
+   height="592.19897mm"
+   viewBox="0 0 635.30736 592.19897"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="2D_VAE_SAC_test1and2.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="1160.3823"
+     inkscape:cy="1329.0283"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1280"
+     inkscape:window-height="961"
+     inkscape:window-x="-8"
+     inkscape:window-y="53"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(479.67453,19.866675)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.46666622px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-370.2984"
+       y="-13.433993"
+       id="text2868"><tspan
+         sodipodi:role="line"
+         id="tspan2866"
+         x="-370.2984"
+         y="-13.433993"
+         style="stroke-width:0.26458332">2D VAE with SAC test1                                                                           2D VAE with SAC test2</tspan></text>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.17287374;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect2864"
+       width="12.729897"
+       height="546.75702"
+       x="-218.41357"
+       y="20.277603"
+       rx="0.091383755"
+       ry="0.10559233" />
+    <rect
+       style="fill:#ffffe0;fill-opacity:1;stroke:none;stroke-width:2.05303144;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect2864-6-1"
+       width="11.660818"
+       height="532.85901"
+       x="-185.23973"
+       y="39.473301"
+       rx="0.083709188"
+       ry="0.10290828" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v2__0vae_resets__0rl_resets_2D.png"
+       y="104.8753"
+       x="-479.67453"
+       id="image3434"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v2__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v3__0vae_resets__0rl_resets_2D.png"
+       y="105.32883"
+       x="-334.83408"
+       id="image3445"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v3__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v4__0vae_resets__0rl_resets_2D.png"
+       y="220.10663"
+       x="-479.67453"
+       id="image3456"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v4__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v5__0vae_resets__0rl_resets_2D.png"
+       y="220.56017"
+       x="-334.83408"
+       id="image3467"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v5__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v6__0vae_resets__1rl_resets_2D.png"
+       y="335.33795"
+       x="-479.67453"
+       id="image3478"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v6__0vae_resets__1rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v7__0vae_resets__1rl_resets_2D.png"
+       y="335.7915"
+       x="-335.36325"
+       id="image3489"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v7__0vae_resets__1rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="193.802" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v8__0vae_resets__1rl_resets_2D.png"
+       y="450.56927"
+       x="-479.67453"
+       id="image3500"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v8__0vae_resets__1rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v9__0vae_resets__2rl_resets_2D.png"
+       y="451.02283"
+       x="-334.3049"
+       id="image3511"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v9__0vae_resets__2rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v0__0vae_resets__0rl_resets_2D.png"
+       y="-10.356033"
+       x="-479.67453"
+       id="image3522"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v0__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="188.63734" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test1_SAC\png\BCE_VAE_l2_test1_SAC_v1__0vae_resets__0rl_resets_2D.png"
+       y="-9.902504"
+       x="-336.4216"
+       id="image3423"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test1_SAC/png/BCE_VAE_l2_test1_SAC_v1__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v2__0vae_resets__0rl_resets_2D.png"
+       y="105.32885"
+       x="-179.25851"
+       id="image3559"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v2__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="188.63734" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v3__0vae_resets__0rl_resets_2D.png"
+       y="105.56216"
+       x="-38.084499"
+       id="image3570"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v3__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v4__0vae_resets__0rl_resets_2D.png"
+       y="220.56018"
+       x="-182.22183"
+       id="image3581"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v4__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v5__0vae_resets__0rl_resets_2D.png"
+       y="220.79349"
+       x="-38.613667"
+       id="image3592"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v5__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v6__0vae_resets__0rl_resets_2D.png"
+       y="335.7915"
+       x="-182.30653"
+       id="image3603"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v6__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="193.802" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v7__0vae_resets__0rl_resets_2D.png"
+       y="336.02481"
+       x="-35.967831"
+       id="image3614"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v7__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v8__0vae_resets__0rl_resets_2D.png"
+       y="451.02283"
+       x="-181.24821"
+       id="image3625"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v8__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v9__0vae_resets__1rl_resets_2D.png"
+       y="451.25613"
+       x="-35.967831"
+       id="image3636"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v9__0vae_resets__1rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="191.60066" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v0__0vae_resets__0rl_resets_2D.png"
+       y="-9.9024811"
+       x="-180.31683"
+       id="image3647"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v0__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="188.63734" />
+    <image
+       sodipodi:absref="C:\Users\MaxFrommknecht\Documents\Master\Thesis\secondRepo\latent-RL\Code\VAE_RL\Plots\SAC\BCE_VAE_l2_test2_SAC\png\BCE_VAE_l2_test2_SAC_v1__0vae_resets__0rl_resets_2D.png"
+       y="-9.6691742"
+       x="-36.179516"
+       id="image3548"
+       xlink:href="file:///C:/Users/MaxFrommknecht/Documents/Master/Thesis/secondRepo/latent-RL/Code/VAE_RL/Plots/SAC/BCE_VAE_l2_test2_SAC/png/BCE_VAE_l2_test2_SAC_v1__0vae_resets__0rl_resets_2D.png"
+       style="image-rendering:optimizeQuality"
+       preserveAspectRatio="none"
+       height="115.23133"
+       width="188.63734" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.91199565;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect2864-6-6"
+       width="9.4689388"
+       height="569.14471"
+       x="-189.73441"
+       y="-2.890564"
+       rx="0.067974396"
+       ry="0.10991596" />
+    <rect
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.28586268;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect2864-6"
+       width="4.1772718"
+       height="583.50781"
+       x="-185.42549"
+       y="-17.253645"
+       rx="0.029987263"
+       ry="0.11268982" />
+  </g>
+</svg>
